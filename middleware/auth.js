@@ -25,7 +25,7 @@ const auth = async (req, res, next) => {
     next();
   } catch (error) {
     console.error(error.message);
-    res.status(500).send("Server Error");
+    res.status(500).send(`${error.message}. Unable to authenticate`);
   }
 };
 
