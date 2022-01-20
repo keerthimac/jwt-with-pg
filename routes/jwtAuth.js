@@ -2,9 +2,10 @@ const router = require("express").Router();
 const pool = require("../db");
 const bcrypt = require("bcryptjs");
 const jwtGenerator = require("../utils/jwtGenerator");
+const validation = require("../middleware/validation");
 
 //Register Route
-router.post("/register", async (req, res) => {
+router.post("/register", validation, async (req, res) => {
   try {
     //01. destructure the req.body (name, email, password)
     const { name, email, password } = req.body;
@@ -47,7 +48,7 @@ router.post("/register", async (req, res) => {
 });
 
 //Login Route
-router.post("/login", async (req, res) => {
+router.post("/login", validation, async (req, res) => {
   try {
     //01 Destucture the req.body (email, password)
     const { email, password } = req.body;
