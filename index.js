@@ -12,6 +12,9 @@ app.use(cors());
 //register and login routes
 app.use("/auth", require("./routes/jwtAuth"));
 
+//dashboard routes
+app.use("/dashboard", require("./routes/dashboard"));
+
 //get all users
 app.get("/users", async (req, res) => {
   try {

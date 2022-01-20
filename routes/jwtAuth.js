@@ -3,6 +3,7 @@ const pool = require("../db");
 const bcrypt = require("bcryptjs");
 const jwtGenerator = require("../utils/jwtGenerator");
 const validation = require("../middleware/validation");
+const auth = require("../middleware/auth");
 
 //Register Route
 router.post("/register", validation, async (req, res) => {
@@ -50,7 +51,7 @@ router.post("/register", validation, async (req, res) => {
 //Login Route
 router.post("/login", validation, async (req, res) => {
   try {
-    //01 Destucture the req.body (email, password)
+    //01 Destructure the req.body (email, password)
     const { email, password } = req.body;
 
     //02. check if the user exists in the database
@@ -74,6 +75,16 @@ router.post("/login", validation, async (req, res) => {
     //04. generate a jwt token and send it back to the client
     const token = jwtGenerator(user.rows[0].user_id); //from utils/jwtGenerator.js
     res.json({ token });
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send("Server Error");
+  }
+});
+
+//Verify Route
+router.get("/verify", auth, async (req, res) => {
+  try {
+    res.json(true);
   } catch (error) {
     console.error(error.message);
     res.status(500).send("Server Error");

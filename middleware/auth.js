@@ -1,3 +1,6 @@
+const jwt = require("jsonwebtoken");
+require("dotenv").config();
+
 const auth = async (req, res, next) => {
   try {
     //01 save the token from the request header
@@ -15,7 +18,7 @@ const auth = async (req, res, next) => {
     const verified = jwt.verify(token, process.env.JWT_SECRET);
 
     //03 set user to the verified user
-    req.user = verified;
+    req.user = verified.user_id;
     console.log(verified);
 
     //04 call next()
