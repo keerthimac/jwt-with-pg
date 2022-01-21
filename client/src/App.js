@@ -1,10 +1,5 @@
 import { useState } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import Register from "./components/Register";
 import Login from "./components/Login";
@@ -15,21 +10,12 @@ function App() {
 
   return (
     <Router>
-      <div className='container'>
+      <div className="container">
         {/* https://www.youtube.com/watch?v=rGmJYIUwxdo&ab_channel=FullstackSimplified */}
         <Routes>
-          {!isAuthenticated && (
-            <>
-              <Route
-                path='/'
-                element={<Register setIsAuthenticated={setIsAuthenticated} />}
-              />
-              <Route exact path='/login' element={<Login />} />
-            </>
-          )}
-          {isAuthenticated && (
-            <Route path='/dashboard' element={<Dashboard />} />
-          )}
+          <Route exact path="/" element={<Register />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/dashboard" element={<Dashboard />} />
         </Routes>
       </div>
     </Router>
