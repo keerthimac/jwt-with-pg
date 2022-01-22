@@ -20,7 +20,6 @@ function App() {
   return (
     <Router>
       <div className='container'>
-        {/* https://www.youtube.com/watch?v=rGmJYIUwxdo&ab_channel=FullstackSimplified */}
         <Routes>
           {/* if isAuthenticated true then navigate to dashboard  */}
           <Route
