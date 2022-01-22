@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 function Dashboard({ setAuth }) {
-  const handleLogout = () => {
+  const handleLogout = (e) => {
+    e.preventDefault();
     setAuth(false);
   };
 

@@ -11,7 +11,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 
 function App() {
-  const [isAuthenticated, setIsAuthenticated] = useState(true); // setIsAuthenticated is a function that takes a boolean value
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // setIsAuthenticated is a function that takes a boolean value
 
   const setAuth = (bool) => {
     setIsAuthenticated(bool);
@@ -19,29 +19,32 @@ function App() {
 
   return (
     <Router>
-      <div className='container'>
+      <div className="container">
         <Routes>
           {/* if isAuthenticated true then navigate to dashboard  */}
           <Route
             exact
-            path='/login'
+            path="/login"
             element={
               <>
                 {isAuthenticated ? (
-                  <Navigate to='/dashboard' />
+                  <Navigate to="/dashboard" />
                 ) : (
-                  <Login setIsAuthenticated={setIsAuthenticated} />
+                  <Login
+                    setIsAuthenticated={setIsAuthenticated}
+                    setAuth={setAuth}
+                  />
                 )}
               </>
             }
           />
           <Route
             exact
-            path='/register'
+            path="/register"
             element={
               <>
                 {isAuthenticated ? (
-                  <Navigate to='/dashboard' />
+                  <Navigate to="/dashboard" />
                 ) : (
                   <Register setIsAuthenticated={setIsAuthenticated} />
                 )}
@@ -50,13 +53,13 @@ function App() {
           />
           <Route
             exact
-            path='/dashboard'
+            path="/dashboard"
             element={
               <>
                 {isAuthenticated ? (
                   <Dashboard setAuth={setAuth} />
                 ) : (
-                  <Navigate to='/login' />
+                  <Navigate to="/login" />
                 )}
               </>
             }
