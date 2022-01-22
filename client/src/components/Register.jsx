@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-function Register() {
+function Register({registerUser}) {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -11,12 +11,11 @@ function Register() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const user = {
-      firstName,
-      lastName,
+      name:firstName,
       email,
       password,
     };
-    console.log(user);
+    registerUser(user);
     setFirstName("");
     setLastName("");
     setEmail("");
@@ -60,10 +59,14 @@ function Register() {
         />
         <div className='d-grid gap-2'>
           <button className='btn btn-success' type='submit'>
-            Login
+            Register
           </button>
         </div>
       </form>
+      <Link className="d-grid gap-2" to="/login">
+        <button className='btn btn-primary mt-2'>Back to Login</button>
+      </Link>
+
 
       {/* <Link to="/login">
         <button className='btn btn-primary m-2'>Login</button>

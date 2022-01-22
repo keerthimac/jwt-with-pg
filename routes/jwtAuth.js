@@ -10,7 +10,10 @@ router.post("/register", validation, async (req, res) => {
   try {
     //01. destructure the req.body (name, email, password)
     const { name, email, password } = req.body;
-    //console.log(req.body);
+    console.log(req.body);
+    console.log(name);
+    console.log(email);
+    console.log(password);
     //console.log(password);
 
     //02. check if the user already exists in the database (if so throw error)

@@ -17,6 +17,25 @@ function App() {
     setIsAuthenticated(bool);
   };
 
+  const registerUser = async (user) => {
+    try {
+      const bodyData = JSON.stringify(user);
+      console.log(bodyData);
+      const response = await fetch("http://localhost:5000/auth/register", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(user),
+      });
+      const data = await response.json();
+      console.log(data.token);
+      window.localStorage.setItem("token", data.token);
+    } catch (err) {
+      console.error(err.message);
+    }
+  };
+
   return (
     <Router>
       <div className="container">
@@ -46,7 +65,10 @@ function App() {
                 {isAuthenticated ? (
                   <Navigate to="/dashboard" />
                 ) : (
-                  <Register setIsAuthenticated={setIsAuthenticated} />
+                  <Register
+                    setIsAuthenticated={setIsAuthenticated}
+                    registerUser={registerUser}
+                  />
                 )}
               </>
             }

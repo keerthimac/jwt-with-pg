@@ -23,10 +23,12 @@ function Login({setAuth}) {
       <form onSubmit={handleSubmit}>
         <input className='form-control my-3' value={email} type="email" placeholder="email" onChange={(e)=>setEmail(e.target.value)} />
         <input className='form-control my-3' value={password} type="password" placeholder="Password" onChange={(e)=>setPassword(e.target.value)} />
-        <button className='btn btn-success block' type="submit">Login</button>
+        <div className="d-grid gap-2">
+        <button className='btn btn-success' type="submit">Login</button>
+        </div>
       </form>
-      <Link to="/register">
-        <button className='btn btn-primary m-2'>Register</button>
+      <Link className="d-grid gap-2" to="/register">
+        <button className='btn btn-primary mt-2'>Register</button>
       </Link>
 
 

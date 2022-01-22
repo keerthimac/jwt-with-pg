@@ -13,6 +13,7 @@ function Dashboard({ setAuth }) {
         <button onClick={handleLogout} className='btn btn-primary m-2'>
           Log out
         </button>
+        
       </Link>
       {/* <Link to="/">
         <button className='btn btn-primary m-2'>Register</button>
