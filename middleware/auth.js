@@ -4,7 +4,7 @@ require("dotenv").config();
 const auth = async (req, res, next) => {
   try {
     //01 save the token from the request header
-    const token = req.header("x-auth-token");
+    const token = req.header("token");
     const user = req.user;
     console.log(user);
 
