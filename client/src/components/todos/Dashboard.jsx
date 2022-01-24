@@ -2,6 +2,11 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
+import InputTodo from "./InputTodo";
+import ListTodo from "./ListTodo";
+
+
+
 function Dashboard({ setAuth }) {
   const [user, setUser] = useState("");
 
@@ -37,6 +42,8 @@ function Dashboard({ setAuth }) {
       <h2>
         Welcome! {user.user_first_name} {user.user_last_name}
       </h2>
+      <InputTodo />
+      <ListTodo />
       <Link to='/login'>
         <button onClick={handleLogout} className='btn btn-primary m-2'>
           Log out
