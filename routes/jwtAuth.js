@@ -9,11 +9,10 @@ const auth = require("../middleware/auth");
 router.post("/register", validation, async (req, res) => {
   try {
     //01. destructure the req.body (name, email, password)
-    const { name, email, password } = req.body;
-    console.log(req.body);
-    console.log(name);
-    console.log(email);
-    console.log(password);
+    const { firstName, lastName, email, password } = req.body;
+    //console.log(req.body);
+    //console.log(email);
+    //console.log(password);
     //console.log(password);
 
     //02. check if the user already exists in the database (if so throw error)
@@ -32,8 +31,8 @@ router.post("/register", validation, async (req, res) => {
 
     //04. insert the user into the database
     const newUser = await pool.query(
-      "INSERT INTO users (user_name, user_email, user_password) VALUES ($1, $2, $3) RETURNING *",
-      [name, email, hashedPassword]
+      "INSERT INTO users (user_first_name,user_last_name, user_email, user_password) VALUES ($1, $2, $3, $4) RETURNING *",
+      [firstName, lastName, email, hashedPassword]
     ); //returns the new user object
     console.log(newUser.rows[0].user_id);
 

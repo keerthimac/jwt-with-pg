@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 
 function Dashboard({ setAuth }) {
-  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
 
   const handleLogout = (e) => {
     e.preventDefault();
@@ -25,7 +25,7 @@ function Dashboard({ setAuth }) {
         },
       });
       const data = await response.json();
-      setName(data.user_name);
+      setUser(data);
     } catch (err) {
       console.error(err.message);
     }
@@ -34,7 +34,9 @@ function Dashboard({ setAuth }) {
   return (
     <div>
       <h1>Dashboard</h1>
-      <h2>Welcome! {name}</h2>
+      <h2>
+        Welcome! {user.user_first_name} {user.user_last_name}
+      </h2>
       <Link to='/login'>
         <button onClick={handleLogout} className='btn btn-primary m-2'>
           Log out
