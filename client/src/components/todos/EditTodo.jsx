@@ -24,7 +24,7 @@ function EditTodo({ editTodo, todo }) {
 
   return (
     <>
-      <Button variant='primary' onClick={handleShow}>
+      <Button variant='primary' onClick={handleShow} disabled>
         Edit
       </Button>
 

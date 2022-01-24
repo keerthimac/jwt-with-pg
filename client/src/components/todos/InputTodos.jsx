@@ -1,7 +1,10 @@
 import { useState } from "react";
 
-function InputTodos({ addTodo }) {
+function InputTodos({ addTodo,user }) {
   const [todo, setTodo] = useState("");
+
+  const {user_id} = user
+  console.log(user_id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -9,6 +12,7 @@ function InputTodos({ addTodo }) {
       return;
     } else {
       const newTodo = {
+        id:user_id,
         description: todo,
       };
 
@@ -19,7 +23,7 @@ function InputTodos({ addTodo }) {
 
   return (
     <div>
-      <h1 className='text-center my-5'>Input TODO</h1>
+      <h1 className='text-center my-5'>Include Your Todo</h1>
       <form onSubmit={handleSubmit} className='d-flex'>
         <input
           type='text'
