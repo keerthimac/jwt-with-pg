@@ -1,10 +1,7 @@
 import { useState } from "react";
 
-function InputTodos({ addTodo,user }) {
+function InputTodos({ addTodo }) {
   const [todo, setTodo] = useState("");
-
-  const {user_id} = user
-  console.log(user_id)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -12,7 +9,6 @@ function InputTodos({ addTodo,user }) {
       return;
     } else {
       const newTodo = {
-        id:user_id,
         description: todo,
       };
 

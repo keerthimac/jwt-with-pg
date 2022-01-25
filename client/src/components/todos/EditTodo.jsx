@@ -15,7 +15,7 @@ function EditTodo({ editTodo, todo }) {
       };
       editTodo(todo.todo_id, EditedTodo);
       console.log(todo.todo_id, EditedTodo);
-      setDescription("");
+      // setDescription("");
       setShow(false);
     }
   };
@@ -24,7 +24,7 @@ function EditTodo({ editTodo, todo }) {
 
   return (
     <>
-      <Button variant='primary' onClick={handleShow} disabled>
+      <Button variant='primary' onClick={handleShow}>
         Edit
       </Button>
 

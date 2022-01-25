@@ -12,7 +12,7 @@ function TodoItem({ todo, deleteTodo, editTodo }) {
         <EditTodo editTodo={editTodo} todo={todo} />
       </td>
       <td>
-        <button onClick={handleDelete} className='btn btn-danger disabled'>
+        <button onClick={handleDelete} className='btn btn-danger'>
           {" "}
           delete
         </button>
